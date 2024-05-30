@@ -1,0 +1,26 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<h1> id: {{ Task.id }}</h1>
+
+<p><strong>Descripcion:</strong> {{ Task.description }}</p>
+<p><strong>Status:</strong> {{ Task.status }}</p>
+
+{% endblock %}
+
+
+{% block sidebar %}
+  {{ block.super }}
+  {% if perms.gestion.change_task or perms.gestion.delete_task %}
+  <hr>
+  <ul class="sidebar-nav">
+    {% if perms.gestion.change_task %}
+      <li><a href="{% url 'Task-update' Task.id %}">Modificar Tarea</a></li>
+    {% endif %}
+    {% if perms.gestion.delete_task %}
+      <li><a href="{% url 'Task-delete' Task.id %}">Borrar Tarea</a></li>
+    {% endif %}
+  </ul>
+  {% endif %} 
+{% endblock %}

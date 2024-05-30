@@ -1,0 +1,21 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Listado de Tareas</h1>
+
+    {% if task_list %}
+    <ul>
+
+      {% for task in task_list %}
+      <li>
+        <a href="{{ task.get_absolute_url }}">{{ task.id }}</a> status: {{task.status}} Descripción: {{task.description}} 
+      </li>
+      {% endfor %}
+
+    </ul>
+
+    {% else %}
+      <p>No hay ninguna tarea.</p>
+    {% endif %}       
+{% endblock %}
+

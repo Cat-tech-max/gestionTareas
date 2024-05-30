@@ -1,0 +1,15 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<h1>Borrar Tarea</h1>
+
+<p>Esta seguro/a de querer borrar la tarea: {{ Task }}?</p>
+
+<form action="" method="POST">
+  {% csrf_token %}
+  <input type="submit" action="" value="Si, elimina.">
+</form>
+{% endif %}
+
+{% endblock %}
